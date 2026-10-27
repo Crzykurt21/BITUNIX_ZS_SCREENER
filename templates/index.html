@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitunix PRE-ZS / ZS Screener</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top"><div><div class="eyebrow">BITUNIX FUTURES · MARKET SCANNER</div><h1>PRE-ZS / ZS Screener</h1><p>Find pre-breakout setups and confirmed ZS breakdowns across USDT perpetuals.</p></div><span class="live-pill"><i></i> Public market data</span></header>
+  <section class="controls panel">
+    <div class="control-field"><label for="timeframe">Timeframe</label>
+      <select id="timeframe"><option>1m</option><option>3m</option><option>15m</option><option selected>1H</option><option>4H</option><option>1D</option><option>1W</option></select>
+    </div>
+    <div class="control-field"><label for="consolidationMode">Consolidation candles</label>
+      <select id="consolidationMode"><option value="fixed" selected>Fixed number</option><option value="range">Candle range</option></select>
+    </div>
+    <div class="control-field" id="fixedLengthField"><label for="consolidationLength">Fixed length</label>
+      <select id="consolidationLength"><option value="10" selected>10 candles</option><option value="15">15 candles</option><option value="20">20 candles</option></select>
+    </div>
+    <div class="control-field range-field" id="rangeFields" hidden>
+      <label>Range length</label>
+      <div class="range-inputs"><select id="consolidationMin" aria-label="Minimum consolidation candles"><option value="10" selected>10 min</option><option value="11">11 min</option><option value="12">12 min</option><option value="13">13 min</option><option value="14">14 min</option><option value="15">15 min</option><option value="16">16 min</option><option value="17">17 min</option><option value="18">18 min</option><option value="19">19 min</option><option value="20">20 min</option></select><span>to</span><select id="consolidationMax" aria-label="Maximum consolidation candles"><option value="10">10 max</option><option value="11">11 max</option><option value="12">12 max</option><option value="13">13 max</option><option value="14">14 max</option><option value="15">15 max</option><option value="16">16 max</option><option value="17">17 max</option><option value="18">18 max</option><option value="19">19 max</option><option value="20" selected>20 max</option><option value="21">21 max</option><option value="22">22 max</option><option value="23">23 max</option><option value="24">24 max</option><option value="25">25 max</option><option value="26">26 max</option><option value="27">27 max</option><option value="28">28 max</option><option value="29">29 max</option><option value="30">30 max</option></select></div>
+    </div>
+    <button id="scanBtn" class="primary">Scan all USDT pairs <span>→</span></button>
+    <div class="status" id="status">Ready to scan</div>
+    <div class="progress-track"><div id="progressBar"></div></div>
+    <div class="progress-meta"><span id="progressText">0%</span><span id="pairText">Waiting to start</span></div>
+  </section>
+  <section class="counts" aria-label="Signal counts">
+    <article class="count-card long"><div class="count-label">ZS <span>LONG</span></div><strong id="count-ZS">0</strong><small>Confirmed upside breakout</small></article>
+    <article class="count-card long"><div class="count-label">Pre-ZS <span>LONG</span></div><strong id="count-Pre-ZS">0</strong><small>Potential upside setup</small></article>
+    <article class="count-card short"><div class="count-label">iZS <span>SHORT</span></div><strong id="count-iZS">0</strong><small>Confirmed downside breakdown</small></article>
+    <article class="count-card short"><div class="count-label">Pre-iZS <span>SHORT</span></div><strong id="count-Pre-iZS">0</strong><small>Potential downside setup</small></article>
+  </section>
+  <section class="panel results-panel">
+    <div class="results-head"><div><h2>Scan results</h2><p id="resultSummary">No signals yet. Start a scan to populate the table.</p></div><span class="closed-badge">Closed candles only</span></div>
+    <div class="table-scroll"><table><thead><tr><th>Coin / Pair</th><th>Signal</th><th>Direction</th></tr></thead><tbody id="resultsBody"><tr class="empty"><td colspan="3">Your matching USDT perpetual pairs will appear here.</td></tr></tbody></table></div>
+  </section>
+  <footer>Uses Bitunix public futures market data. Signals are screening results, not trade recommendations.</footer>
+</main>
+<script src="/static/app.js"></script>
+</body></html>
